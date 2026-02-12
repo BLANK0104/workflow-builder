@@ -1,93 +1,40 @@
-# About Me
-
-## Developer Information
-
-**Name**: [Your Name Here]
-
-**Contact**: 
-- Email: your.email@example.com
-- LinkedIn: linkedin.com/in/yourprofile
-- GitHub: github.com/yourusername
-- Portfolio: yourportfolio.com
-
-## Professional Summary
-
-[Add your professional summary here - 2-3 sentences about your experience, skills, and what you're looking for]
-
-Example:
-Full-stack developer with 5+ years of experience building web applications using modern JavaScript frameworks. Passionate about creating clean, maintainable code and delightful user experiences. Currently seeking opportunities to work on innovative products with a collaborative team.
-
-## Skills
-
-### Programming Languages
-- JavaScript/TypeScript
-- Python
-- [Add other languages]
-
-### Frontend
-- React / Next.js
-- HTML5 / CSS3
-- Tailwind CSS
-- [Add other frontend technologies]
-
-### Backend
-- Node.js
-- Express
-- API Design
-- [Add other backend technologies]
-
-### Databases
-- MongoDB
-- PostgreSQL
-- [Add other databases]
-
-### Tools & Technologies
-- Git / GitHub
-- Docker
-- [Add other tools]
-
-## Education
-
-**[Your Degree]**
-[University Name]
-[Graduation Year]
-
-## Experience
-
-### [Current or Most Recent Position]
-**[Company Name]** | [Dates]
-- [Key responsibility or achievement]
-- [Key responsibility or achievement]
-- [Key responsibility or achievement]
-
-### [Previous Position]
-**[Company Name]** | [Dates]
-- [Key responsibility or achievement]
-- [Key responsibility or achievement]
-
-## Projects
-
-### Workflow Builder Lite
-A Next.js application for creating and running AI-powered text automation workflows. Uses MongoDB for persistence and Groq for AI processing.
-
-### [Other Project]
-[Brief description of project and technologies used]
-
-## Certifications
-
-- [Certification Name] - [Issuing Organization] - [Year]
-- [Add more certifications]
-
-## Interests
-
-- [Your professional interests]
-- [Programming communities you're active in]
-- [Technical topics you're passionate about]
-
-## Get in Touch
-
-I'm always interested in hearing about new opportunities and connecting with fellow developers. Feel free to reach out via email or LinkedIn!
-
----
-
-*Last Updated: February 2026*
+UTSAV CHANDRA
+EDUCATION
+NMIMS University (MPSTME) Shirpur, India
+B.Tech in Computer Engineering 2022 – 2026
+CGPA: 3.43 / 4.0
+TECHNICAL SKILLS
+• Programming Languages: JavaScript, Python, Kotlin, SQL
+• Frontend: React.js, HTML5, CSS3
+• Backend: Node.js, Express.js, REST APIs
+• Databases: PostgreSQL, MongoDB
+• Cloud & DevOps: AWS, VPS Deployment, Nginx, Linux
+• Security: Network Security, Penetration Testing, TryHackMe (Top 3%)
+CORE COMPETENCIES
+• Full Stack Application Development and System Design
+• REST API Architecture, Authentication & Authorization (RBAC)
+• Database Modeling, Deployment, and Server Configuration
+• Secure Application Development and Cybersecurity Fundamentals
+PROJECTS
+Treasure Hunt Application React, Node.js, PostgreSQL
+• Designed and developed a full-stack web application with RESTful APIs and relational database schema.
+• Deployed the application on a Linux-based VPS using Nginx reverse proxy and production runtime setup.
+Event Management Portal React, Node.js, PostgreSQL
+• Developed a college-wide event management system with secure authentication and Role-Based Access Control.
+• Built an admin dashboard providing analytics and real-time event monitoring features.
+College Leave Management App Kotlin, Node.js
+• Created a native Android application supporting multi-level approval workflows across five user roles.
+• Implemented backend services in Node.js to manage leave requests and approval states.
+EXPERIENCE
+MemoTag AI & ML Intern
+• Designed and implemented a voice cloning system to assist dementia patients, leveraging familiar voices to
+improve patient engagement and comfort.
+• Worked on speech processing and AI model integration to generate personalized voice outputs.
+Hindustan Aeronautics Limited (HAL) Software Intern
+• Contributed to the development of an enterprise billing system for international import and export transactions.
+• Implemented billing logic and data validation for cross-border trade operations.
+ACHIEVEMENTS & CERTIFICATIONS
+• Global Rank 77 (Top 3%) — TryHackMe CTF 2025 (3,200+ teams)
+• Finalist — KakushIN by Nomura (FinTech Hackathon)
+• AWS Cloud Architect, AWS GenAI, Accenture iAspire (Gold Level)
+• Convener — Ambiora (College Technical Fest)
