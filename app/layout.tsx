@@ -32,7 +32,7 @@ export default function RootLayout({
           <div className="container mx-auto px-4 py-4">
             <div className="flex justify-between items-center">
               <Link href="/" className="text-xl font-bold text-gray-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition">
-                ⚡ Workflow Builder
+                Workflow Builder
               </Link>
               <div className="flex gap-4">
                 <Link

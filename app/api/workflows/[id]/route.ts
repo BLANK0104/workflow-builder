@@ -58,3 +58,50 @@ export async function DELETE(
     );
   }
 }
+
+export async function PUT(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  try {
+    const { id } = await params;
+    const body = await request.json();
+    const { name, description, steps } = body;
+    
+    if (!name || !steps || steps.length < 2 || steps.length > 4) {
+      return NextResponse.json(
+        { error: 'Workflow must have a name and 2-4 steps' },
+        { status: 400 }
+      );
+    }
+    
+    const db = await getDatabase();
+    const result = await db.collection<Workflow>('workflows').updateOne(
+      { _id: new ObjectId(id) },
+      {
+        $set: {
+          name,
+          description: description || '',
+          steps,
+          updatedAt: new Date(),
+        }
+      }
+    );
+    
+    if (result.matchedCount === 0) {
+      return NextResponse.json(
+        { error: 'Workflow not found' },
+        { status: 404 }
+      );
+    }
+    
+    const workflow = await db.collection<Workflow>('workflows').findOne({ _id: new ObjectId(id) });
+    return NextResponse.json(workflow);
+  } catch (error) {
+    console.error('Error updating workflow:', error);
+    return NextResponse.json(
+      { error: 'Failed to update workflow' },
+      { status: 500 }
+    );
+  }
+}
