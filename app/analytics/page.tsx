@@ -49,14 +49,14 @@ export default function AnalyticsPage() {
 
       // Calculate statistics
       const totalRuns = filteredRuns.length;
-      const successfulRuns = filteredRuns.filter(r => r.status === 'completed').length;
+      const successfulRuns = filteredRuns.filter(r => r.status === 'success').length;
       const failedRuns = filteredRuns.filter(r => r.status === 'error').length;
       const successRate = totalRuns > 0 ? (successfulRuns / totalRuns) * 100 : 0;
 
-      // Calculate average duration (if durationMs is available)
+      // Calculate average duration (if totalDuration is available)
       const durations = filteredRuns
-        .filter(r => r.durationMs)
-        .map(r => r.durationMs || 0);
+        .filter(r => r.totalDuration)
+        .map(r => r.totalDuration || 0);
       const averageDuration = durations.length > 0
         ? durations.reduce((sum, d) => sum + d, 0) / durations.length
         : 0;
