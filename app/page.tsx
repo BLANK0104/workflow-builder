@@ -99,8 +99,12 @@ export default function Home() {
     try {
       const res = await fetch('/api/workflows');
       if (res.ok) {
-        const data = await res.json();
-        setWorkflows(data);
+        const response = await res.json();
+        console.log('API Response:', response);
+        
+        // Extract workflows array from the API response structure
+        const workflows = response.data?.workflows || [];
+        setWorkflows(workflows);
       }
     } catch (err) {
       console.error('Failed to load workflows:', err);
@@ -111,8 +115,12 @@ export default function Home() {
     try {
       const res = await fetch('/api/runs?limit=5');
       if (res.ok) {
-        const data = await res.json();
-        setRecentRuns(data);
+        const response = await res.json();
+        console.log('Runs API Response:', response);
+        
+        // Extract runs array from the API response structure
+        const runs = response.data || [];
+        setRecentRuns(runs);
       }
     } catch (err) {
       console.error('Failed to load runs:', err);
