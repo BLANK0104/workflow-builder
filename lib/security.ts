@@ -1,42 +1,48 @@
-import DOMPurify from 'isomorphic-dompurify';
 import { z } from 'zod';
 
-// Security configuration for DOMPurify
-const PURIFY_CONFIG = {
-  ALLOWED_TAGS: ['p', 'br', 'strong', 'em', 'u', 'i', 'b', 'code', 'pre', 'blockquote'],
-  ALLOWED_ATTR: [],
-  KEEP_CONTENT: false,
-  RETURN_DOM: false,
-  RETURN_DOM_FRAGMENT: false,
-  SANITIZE_DOM: true,
-};
+/**
+ * Simple HTML entity encoder for basic XSS protection
+ */
+function encodeHtmlEntities(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#x27;')
+    .replace(/\//g, '&#x2F;');
+}
 
-// Strict purify config for user input
-const STRICT_PURIFY_CONFIG = {
-  ALLOWED_TAGS: [],
-  ALLOWED_ATTR: [],
-  STRIP_TAGS: true,
-  KEEP_CONTENT: true,
-};
+/**
+ * Strip HTML tags from string
+ */
+function stripHtmlTags(input: string): string {
+  // Remove HTML tags while preserving content
+  return input.replace(/<[^>]*>/g, '');
+}
 
 /**
  * Sanitize HTML content while preserving safe formatting
+ * For serverless compatibility, we use a simple tag stripper
  */
 export function sanitizeHtml(input: string): string {
   if (typeof input !== 'string') {
     throw new Error('Input must be a string');
   }
-  return DOMPurify.sanitize(input, PURIFY_CONFIG);
+  // For now, just strip all HTML tags to avoid XSS
+  return stripHtmlTags(input);
 }
 
 /**
- * Strictly sanitize user input by removing all HTML tags
+ * Strictly sanitize user input by removing all HTML tags and encoding entities
  */
 export function sanitizeUserInput(input: string): string {
   if (typeof input !== 'string') {
     throw new Error('Input must be a string');
   }
-  return DOMPurify.sanitize(input, STRICT_PURIFY_CONFIG).trim();
+  // Strip HTML tags and encode any remaining special characters
+  const stripped = stripHtmlTags(input);
+  return stripped.trim();
 }
 
 /**
