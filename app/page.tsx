@@ -115,11 +115,10 @@ export default function Home() {
     try {
       const res = await fetch('/api/runs?limit=5');
       if (res.ok) {
-        const response = await res.json();
-        console.log('Runs API Response:', response);
+        const runs = await res.json();
+        console.log('Runs API Response:', runs);
         
-        // Extract runs array from the API response structure
-        const runs = response.data || [];
+        // The runs API returns the array directly, not wrapped in a data property
         setRecentRuns(runs);
       }
     } catch (err) {
