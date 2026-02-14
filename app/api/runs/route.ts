@@ -3,6 +3,7 @@ import { getDatabase } from '@/lib/mongodb';
 import { processWithGemini } from '@/lib/gemini';
 import { WorkflowRun, StepResult, Workflow } from '@/lib/types';
 import { ObjectId } from 'mongodb';
+import { log } from '@/lib/logger';
 
 export async function GET(request: NextRequest) {
   try {
@@ -24,7 +25,10 @@ export async function GET(request: NextRequest) {
     
     return NextResponse.json(runs);
   } catch (error) {
-    console.error('Error fetching runs:', error);
+    log.error('Error fetching runs', {
+      error: error instanceof Error ? error : String(error),
+      operation: 'get_runs',
+    });
     return NextResponse.json(
       { error: 'Failed to fetch runs' },
       { status: 500 }
@@ -127,7 +131,10 @@ export async function POST(request: NextRequest) {
     
     return NextResponse.json({ ...run, _id: result.insertedId }, { status: 201 });
   } catch (error) {
-    console.error('Error executing workflow:', error);
+    log.error('Error executing workflow', {
+      error: error instanceof Error ? error : String(error),
+      operation: 'execute_workflow',
+    });
     return NextResponse.json(
       { error: `Failed to execute workflow: ${error instanceof Error ? error.message : 'Unknown error'}` },
       { status: 500 }

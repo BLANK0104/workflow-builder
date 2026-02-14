@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getDatabase } from '@/lib/mongodb';
+import { log } from '@/lib/logger';
 
 export async function GET(request: NextRequest) {
   try {
@@ -20,7 +21,10 @@ export async function GET(request: NextRequest) {
       }
     });
   } catch (error) {
-    console.error('Database test failed:', error);
+    log.error('Database test failed', {
+      error: error instanceof Error ? error : String(error),
+      operation: 'database_test',
+    });
     return NextResponse.json(
       { 
         status: 'error',

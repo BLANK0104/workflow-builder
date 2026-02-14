@@ -120,7 +120,7 @@ export default function StatusPage() {
                       LLM Connection
                     </h2>
                     <p className="text-sm text-gray-600 dark:text-gray-400">
-                      Google Gemini Pro
+                      Groq Llama 3.3 70B
                     </p>
                   </div>
                 </div>

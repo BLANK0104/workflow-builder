@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getDatabase } from '@/lib/mongodb';
 import { ObjectId } from 'mongodb';
 import { Workflow } from '@/lib/types';
+import { log } from '@/lib/logger';
 
 export async function GET(
   request: NextRequest,
@@ -23,7 +24,10 @@ export async function GET(
     
     return NextResponse.json(workflow);
   } catch (error) {
-    console.error('Error fetching workflow:', error);
+    log.error('Error fetching workflow', {
+      error: error instanceof Error ? error : String(error),
+      operation: 'get_workflow',
+    });
     return NextResponse.json(
       { error: 'Failed to fetch workflow' },
       { status: 500 }
@@ -51,7 +55,10 @@ export async function DELETE(
     
     return NextResponse.json({ message: 'Workflow deleted' });
   } catch (error) {
-    console.error('Error deleting workflow:', error);
+    log.error('Error deleting workflow', {
+      error: error instanceof Error ? error : String(error),
+      operation: 'delete_workflow',
+    });
     return NextResponse.json(
       { error: 'Failed to delete workflow' },
       { status: 500 }
@@ -98,7 +105,10 @@ export async function PUT(
     const workflow = await db.collection<Workflow>('workflows').findOne({ _id: new ObjectId(id) });
     return NextResponse.json(workflow);
   } catch (error) {
-    console.error('Error updating workflow:', error);
+    log.error('Error updating workflow', {
+      error: error instanceof Error ? error : String(error),
+      operation: 'update_workflow',
+    });
     return NextResponse.json(
       { error: 'Failed to update workflow' },
       { status: 500 }
